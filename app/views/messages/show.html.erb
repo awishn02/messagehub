@@ -1,0 +1,4 @@
+<div class="message" style="position: relative;background: green; width:100%; min-height:80px;">
+<p><%= @message.content %></p>
+<p style="position: absolute; bottom: 0px; right: 5px"><%= @message.username %> | <abbr class="date" title="<%= @message.created_at.to_time.iso8601 %>"></abbr></p>
+</div>

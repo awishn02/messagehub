@@ -1,0 +1,25 @@
+class MessagesController < ApplicationController
+  skip_before_filter :verify_authenticity_token
+  def index
+    @messages = Message.all
+    respond_to do |format|
+      format.html
+      format.json {render json: @messages.to_json}
+    end
+  end
+
+  def create
+    #@message = Message.new(params[:message])
+    @message = Message.new(params.require(:message).permit(:username, :content, :app_id))
+    respond_to do |format|
+      if @game.save
+        format.json {render json: @message}
+      else
+        format.json {render json: @message.errors}
+      end
+    end
+  end
+
+  def show
+  end
+end

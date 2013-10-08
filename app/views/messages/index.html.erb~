@@ -1,0 +1,6 @@
+<% @messages.each do |message| %>
+  <div style="position: relative;background: green; width:100%; min-height:80px;">
+    <p><%= message.content %></p>
+    <p style="position: absolute; bottom: 0px; right: 5px"><%= message.username %> | <%= message.created_at %></p>
+  </div>
+<% end %>
