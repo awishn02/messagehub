@@ -19,5 +19,11 @@ module Messagehub
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    
+    Urbanairship.application_key = 'UHVAmz_TQZq22AhHF8op-Q'
+    Urbanairship.application_secret = 'LbKqJiyXSHCLrbi2aV__JA'
+    Urbanairship.master_secret = '2KOb-cpBQVSLk189tjbeBQ'
+    Urbanairship.logger = Rails.logger
+    Urbanairship.request_timeout = 5
   end
 end

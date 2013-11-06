@@ -4,6 +4,7 @@ Messagehub::Application.routes.draw do
   get "messages/show"
 
   resources :messages
+  post "register/index"
 
   root 'messages#index'
   # The priority is based upon order of creation: first created -> highest priority.
