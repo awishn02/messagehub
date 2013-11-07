@@ -10,4 +10,8 @@ class RegisterController < ApplicationController
       format.json {render :text => params[:device]}
     end
   end
+
+  def destroy
+    Urbanairship.unregister_device params[:device][:device_token]
+  end
 end
