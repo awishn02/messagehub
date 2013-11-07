@@ -26,7 +26,7 @@ class MessagesController < ApplicationController
       if @message.save
         format.json {render json: @message}
       else
-        format.json {render json: @message.errors}
+        format.json {render json: @message.errors, :status => 500}
       end
     end
   end
