@@ -22,7 +22,7 @@ class MessagesController < ApplicationController
       :device_tokens => ['C44CA5DC5B47038CEF7802010C514A3564396828BBB643CF861220EAD5961C9B'],
       :aps => {:alert => 'You have new messages!', :badge => 1}
     }
-    Urbanairship.push notification
+    Urbanairship.push(notification)
     respond_to do |format|
       if @message.save
         format.json {render json: @message}
