@@ -2,17 +2,6 @@ class MessagesController < ApplicationController
   skip_before_filter :verify_authenticity_token
   def index
     @messages = Message.where("created_at > ?", Time.at(params[:after].to_i + 1)).order("created_at DESC")
-    devices = Device.all
-    puts devices
-    puts "here first"
-    device_tokens = []
-    devices.each do |device|
-      puts "looping"
-      puts device.device_token
-      device_tokens.push(device.device_token)
-    end
-    puts device_tokens
-    puts "here"
     respond_to do |format|
       format.html
       format.js {}
@@ -29,7 +18,7 @@ class MessagesController < ApplicationController
       device_tokens.push(device.device_token)
     end
     notification = {
-      :schedule_for => 5.seconds.from_now,
+      :schedule_for => Time.now,
       :device_tokens => device_tokens,
       :aps => {:alert => 'You have new messages!', :badge => 1}
     }
