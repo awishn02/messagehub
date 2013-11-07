@@ -18,7 +18,7 @@ class MessagesController < ApplicationController
       device_tokens.push(device.device_token)
     end
     notification = {
-      :device_tokens => ['C44CA5DC5B47038CEF7802010C514A3564396828BBB643CF861220EAD5961C9B'],
+      :device_tokens => device_tokens,
       :aps => {:alert => 'You have new messages!', :badge => 1}
     }
     Urbanairship.push(notification)
