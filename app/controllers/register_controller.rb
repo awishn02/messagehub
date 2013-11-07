@@ -10,6 +10,7 @@ class RegisterController < ApplicationController
       if device.save
         format.json {render :text => params[:device]}
       else
+        puts device.errors
         format.json {render json: device.errors}
       end
     end
