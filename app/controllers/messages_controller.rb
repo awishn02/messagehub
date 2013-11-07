@@ -11,6 +11,17 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(params.require(:message).permit(:username, :content, :app_id))
+    devices = Device.where.not(device_token: params[:device_token])
+    device_tokens = []
+    devices.each do |device|
+      device_tokens.push(device[:device_token])
+    end
+    notification = {
+      :schedule_for => 5.seconds.from_now,
+      :device_tokens => device_tokens,
+      :aps => {:alert => 'You have new messages!', :badge => 1}
+    }
+    Urbanairship.push notification
     respond_to do |format|
       if @message.save
         format.json {render json: @message}
