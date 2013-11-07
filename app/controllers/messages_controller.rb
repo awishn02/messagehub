@@ -20,10 +20,6 @@ class MessagesController < ApplicationController
     end
   end
 
-  def register
-
-  end
-
   def show
     @message = Message.find(params[:id])
   end
