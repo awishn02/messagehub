@@ -5,9 +5,13 @@ class RegisterController < ApplicationController
     puts params[:device]
     puts params[:device][:device_token]
     Urbanairship.register_device(params[:device][:device_token])
-    Device.new(params[:device])
+    device = Device.new(params[:device])
     respond_to do |format|
-      format.json {render :text => params[:device]}
+      if device.save
+        format.json {render :text => params[:device]}
+      else
+        form.json {render json: device.errors}
+      end
     end
   end
 
