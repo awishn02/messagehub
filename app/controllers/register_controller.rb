@@ -5,7 +5,7 @@ class RegisterController < ApplicationController
     puts params[:device]
     puts params[:device][:device_token]
     Urbanairship.register_device(params[:device][:device_token])
-    @device = Device.new(params[:device])
+    @device = Device.new(params.require(:device).permit(:device_token))
     respond_to do |format|
       if @device.save
         puts @device
