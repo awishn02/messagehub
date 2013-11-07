@@ -11,7 +11,8 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(params.require(:message).permit(:username, :content, :app_id))
-    devices = Device.where.not(device_token: params.require(:message).permit(:device_token))
+    #devices = Device.where.not(device_token: params.require(:message).permit(:device_token))
+    devices = Device.all
     device_tokens = []
     devices.each do |device|
       device_tokens.push(device[:device_token])
