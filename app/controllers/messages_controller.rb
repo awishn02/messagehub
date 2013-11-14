@@ -30,6 +30,13 @@ class MessagesController < ApplicationController
     end
   end
 
+  def messageForUser
+    @messages = Message.where("username = ?", params[:username])
+    respond_to do |format|
+      format.json {render json: @messages.to_json}
+    end
+  end
+
   def show
     @message = Message.find(params[:id])
   end

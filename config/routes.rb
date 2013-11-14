@@ -2,6 +2,7 @@ Messagehub::Application.routes.draw do
   get "messages/index"
   post "messages/create"
   get "messages/show"
+  get "messages/:username/messagesForUser" => "messages#messagesForUser"
 
   resources :messages
   post "register/index"
