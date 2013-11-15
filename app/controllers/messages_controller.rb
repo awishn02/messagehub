@@ -31,7 +31,7 @@ class MessagesController < ApplicationController
   end
 
   def messagesForUser
-    @messages = Message.where("username = ?", params[:username])
+    @messages = Message.where("username = ?", params[:username]).order("created_at DESC")
     respond_to do |format|
       format.json {render json: @messages.to_json}
     end
