@@ -26,4 +26,5 @@ Messagehub::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+  ENV["REDISTOGO_URL"] = "redis://redistogo:15319dfc1e4014a747b5f5883c35d45d@grideye.redistogo.com:9190"
 end

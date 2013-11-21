@@ -5,6 +5,7 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
+ENV["REDISTOGO_URL"] = "redis://redistogo:15319dfc1e4014a747b5f5883c35d45d@grideye.redistogo.com:9190/"
 
 module Messagehub
   class Application < Rails::Application

@@ -77,4 +77,5 @@ Messagehub::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+  ENV["REDISTOGO_URL"] = "redis://redistogo:15319dfc1e4014a747b5f5883c35d45d@grideye.redistogo.com:9190"
 end
